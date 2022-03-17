@@ -1,0 +1,23 @@
+<%= simple_form_for @response do |f| %>
+  <%- if @user_survey != nil -%>
+    <div class="mb-3">
+      <%= @user_survey.question %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :response, as: :radio_buttons, label: "", class: "form-check-label" %>
+    </div>
+    <%= f.input :user_survey_id, :as => :hidden, :input_html => { :value => @user_survey.id } %>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <%= link_to 'Cancel', "/", class: "btn btn-primary" %>
+    </div>
+  <%- else -%>
+    <div class="mb-3">
+      There is an issue with this survey
+      <%= link_to 'Return to list', "/", class: "btn btn-primary" %>
+    </div>
+  <%- end -%>
+<% end %>
+
+
